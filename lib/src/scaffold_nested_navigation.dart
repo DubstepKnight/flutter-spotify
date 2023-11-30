@@ -25,29 +25,41 @@ class ScaffoldWithNestedNavigation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: navigationShell.currentIndex,
-        destinations: [
-          NavigationDestination(
-            label: 'Home',
-            icon: Icon(navigationShell.currentIndex == 0
-                ? Icons.home_sharp
-                : Icons.home_outlined),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.transparent, Colors.black.withOpacity(0.0)],
           ),
-          NavigationDestination(
-            label: 'Search',
-            icon: Icon(navigationShell.currentIndex == 1
-                ? Icons.search
-                : Icons.search_outlined),
-          ),
-          NavigationDestination(
-            label: 'Your Library',
-            icon: Icon(navigationShell.currentIndex == 2
-                ? Icons.library_music
-                : Icons.library_music_outlined),
-          ),
-        ],
-        onDestinationSelected: _goBranch,
+        ),
+        child: NavigationBar(
+          selectedIndex: navigationShell.currentIndex,
+          backgroundColor: Colors.transparent,
+          indicatorColor: Colors.transparent,
+          elevation: 0,
+          destinations: [
+            NavigationDestination(
+              label: 'Home',
+              icon: Icon(navigationShell.currentIndex == 0
+                  ? Icons.home_sharp
+                  : Icons.home_outlined),
+            ),
+            NavigationDestination(
+              label: 'Search',
+              icon: Icon(navigationShell.currentIndex == 1
+                  ? Icons.search
+                  : Icons.search_outlined),
+            ),
+            NavigationDestination(
+              label: 'Your Library',
+              icon: Icon(navigationShell.currentIndex == 2
+                  ? Icons.library_music
+                  : Icons.library_music_outlined),
+            ),
+          ],
+          onDestinationSelected: _goBranch,
+        ),
       ),
     );
   }

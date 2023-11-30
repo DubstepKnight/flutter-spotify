@@ -2,12 +2,12 @@ name: flutter_spotify
 description: A new Flutter project.
 
 # Prevent accidental publishing to pub.dev.
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.5 <4.0.0'
+  sdk: ">=3.1.5 <4.0.0"
 
 dependencies:
   flutter:
@@ -16,7 +16,8 @@ dependencies:
     sdk: flutter
   go_router: ^12.1.1
   flutter_riverpod: ^2.4.6
-  
+  google_fonts: ^6.1.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

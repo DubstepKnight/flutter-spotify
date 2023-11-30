@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_spotify/router_config.dart';
+import 'package:flutter_spotify/src/system_design/theme.dart';
 import 'settings/settings_controller.dart';
 
 /// The Widget that configures your application.
@@ -49,16 +50,9 @@ class MyApp extends StatelessWidget {
           // directory.
           onGenerateTitle: (BuildContext context) =>
               AppLocalizations.of(context)!.appTitle,
-
-          // Define a light and dark color theme. Then, read the user's
-          // preferred ThemeMode (light, dark, or system default) from the
-          // SettingsController to display the correct theme.
-          theme: ThemeData(),
-          darkTheme: ThemeData.dark(),
-          themeMode: settingsController.themeMode,
-
-          // Define a function to handle named routes in order to support
-          // Flutter web url navigation and deep linking.
+          theme: themeData,
+          // darkTheme: ThemeData.dark(),
+          // themeMode: settingsController.themeMode,
           routerConfig: routerConfig,
         );
       },

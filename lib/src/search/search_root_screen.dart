@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spotify/router_config.dart';
+import 'package:flutter_spotify/src/components/profile_drawer.dart';
+import 'package:flutter_spotify/src/search/custom_app_bar.dart';
 import 'package:go_router/go_router.dart';
 
-class RootScreen extends StatelessWidget {
-  RootScreen({Key? key, required this.label, required this.detailsPath})
+class SearchRootScreen extends StatelessWidget {
+  const SearchRootScreen(
+      {Key? key, required this.label, required this.detailsPath})
       : super(key: key);
 
   final String label;
@@ -11,8 +15,12 @@ class RootScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(label),
+      appBar: CustomAppBar(label: label),
+      drawer: ProfileDrawer(
+        profileName: Routes.searchProfile.name,
+        newsName: Routes.searchNews.name,
+        historyName: Routes.searchHistory.name,
+        settingsName: Routes.searchSettings.name,
       ),
       body: Center(
         child: Column(
