@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spotify/src/listening-history/listening_history.dart';
-import 'package:flutter_spotify/src/profile/views/profile_view.dart';
+import 'package:flutter_spotify/src/profile/presentation/controllers/profile_controller.dart';
+import 'package:flutter_spotify/src/profile/presentation/views/profile_view.dart';
 import 'package:flutter_spotify/src/settings/settings_view.dart';
 import 'package:go_router/go_router.dart';
 
-class ProfileDrawer extends StatelessWidget {
+class ProfileDrawer extends ConsumerWidget {
   const ProfileDrawer({
     super.key,
     required this.profileName,
@@ -19,7 +21,9 @@ class ProfileDrawer extends StatelessWidget {
   final String settingsName;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(profileControllerProvider);
+
     return Drawer(
       child: NavigationDrawer(
         children: [
@@ -34,30 +38,27 @@ class ProfileDrawer extends StatelessWidget {
                       builder: (context) => const ProfileView(),
                     ),
                   ),
-                  child: const DrawerHeader(
-                    margin: EdgeInsets.only(bottom: 0),
+                  child: DrawerHeader(
+                    margin: const EdgeInsets.only(bottom: 0),
                     child: Row(
                       children: [
-                        Hero(
-                          tag: 'topBarBtn',
-                          child: CircleAvatar(
-                            backgroundColor: Colors.green,
-                            radius: 25,
-                          ),
+                        const CircleAvatar(
+                          backgroundColor: Colors.green,
+                          radius: 25,
                         ),
                         Padding(
-                          padding: EdgeInsets.only(left: 8.0),
+                          padding: const EdgeInsets.only(left: 8.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "Nursultan Akhmetzhanov",
-                                style: TextStyle(
+                                state.valueOrNull?.displayName ?? '',
+                                style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.bold),
                               ),
-                              Text(
+                              const Text(
                                 "View profile",
                                 style: TextStyle(
                                     color: Colors.white70, fontSize: 12),

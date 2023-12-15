@@ -31,18 +31,15 @@ class CustomAppBar extends StatelessWidget {
             children: [
               Builder(
                 builder: (BuildContext context) {
-                  return Hero(
-                    tag: 'topBarBtnLibrary',
-                    child: MaterialButton(
-                      color: Colors.green,
-                      height: 40,
-                      minWidth: 40,
-                      elevation: 1,
-                      shape: kBackButtonShape,
-                      onPressed: () {
-                        Scaffold.of(context).openDrawer();
-                      },
-                    ),
+                  return MaterialButton(
+                    color: Colors.green,
+                    height: 40,
+                    minWidth: 40,
+                    elevation: 1,
+                    shape: kBackButtonShape,
+                    onPressed: () {
+                      Scaffold.of(context).openDrawer();
+                    },
                   );
                 },
               ),

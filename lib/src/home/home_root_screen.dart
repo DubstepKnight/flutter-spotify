@@ -11,7 +11,6 @@ ShapeBorder kBackButtonShape = const RoundedRectangleBorder(
 
 Widget kBackBtn = const Icon(
   Icons.arrow_back_ios,
-  // color: Colors.black54,
 );
 
 class HomeRootScreen extends StatelessWidget {

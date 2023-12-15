@@ -2,9 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spotify/src/playlist/data/playlist_provider.dart';
-import 'package:flutter_spotify/src/profile/data/profile_provider.dart';
-import 'package:flutter_spotify/src/profile/views/playlists_view.dart';
-import 'package:flutter_spotify/src/profile/views/profile_header_view.dart';
+import 'package:flutter_spotify/src/profile/data/profile_repository.dart';
+import 'package:flutter_spotify/src/profile/presentation/controllers/profile_controller.dart';
+import 'package:flutter_spotify/src/profile/presentation/views/playlists_view.dart';
+import 'package:flutter_spotify/src/profile/presentation/views/profile_header_view.dart';
+import 'package:flutter_spotify/src/utils/async_value_ui.dart';
 
 const kClampMax = 100.0;
 
@@ -41,13 +43,18 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
 
   @override
   Widget build(BuildContext context) {
-    final profileValue = ref.watch(profileProvider('1'));
+    // final profileValue = ref.watch(profileProvider);
     final playlists = ref.watch(playlistsProvider);
 
-    return profileValue.when(
+    final state = ref.watch(profileControllerProvider);
+
+    return state.when(
       data: (profile) => profile == null
-          ? const Center(
-              child: Text('No data'),
+          ? Scaffold(
+              appBar: AppBar(),
+              body: const Center(
+                child: Text('No data'),
+              ),
             )
           : Scaffold(
               extendBodyBehindAppBar: true,
@@ -71,7 +78,9 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
                 controller: _scrollController,
                 child: Column(
                   children: [
-                    const ProfileHeaderView(),
+                    ProfileHeaderView(
+                      profile: profile,
+                    ),
                     PlaylistsView(playlists)
                   ],
                 ),

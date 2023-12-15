@@ -6,7 +6,7 @@ typedef ProfileID = String;
 
 /// Class representing a profile.
 class Profile {
-  const Profile({
+  Profile({
     required this.id,
     required this.images,
     required this.displayName,
@@ -22,7 +22,7 @@ class Profile {
   /// Unique product id
   final ProfileID id;
   final List<Image> images;
-  final String displayName;
+  String displayName;
   final String email;
   final Followers followers;
   final ExternalURLs externalURLs;
@@ -30,4 +30,6 @@ class Profile {
   final String product;
   final String type;
   final String uri;
+
+  set name(String name) => displayName = name;
 }

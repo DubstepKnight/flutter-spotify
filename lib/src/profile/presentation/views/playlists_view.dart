@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spotify/src/components/playlist_tile.dart';
 import 'package:flutter_spotify/src/playlist/domain/playlist.dart';
+import 'package:flutter_spotify/src/playlist/views/all_playlists_view.dart';
 
 class PlaylistsView extends ConsumerWidget {
-  const PlaylistsView(this.playlists, {super.key});
+  const PlaylistsView(this.playlistsValue, {super.key});
 
-  final AsyncValue<List<Playlist>> playlists;
+  final AsyncValue<List<Playlist>> playlistsValue;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,29 +25,31 @@ class PlaylistsView extends ConsumerWidget {
             ),
           ),
         ),
-        playlists.when(
+        playlistsValue.when(
           data: (playlists) => Column(
             children: [
               ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.only(top: 0),
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: playlists.length,
                 itemBuilder: (context, index) {
                   if (index <= 3) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: PlaylistTile(
-                        playlist: playlists[index],
-                      ),
+                    return PlaylistTile(
+                      playlist: playlists[index],
                     );
                   }
                   return null;
                 },
               ),
-              playlists.length > 3
+              playlists.length > 2
                   ? TextButton(
-                      onPressed: () {},
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              AllPlaylistsView(playlists: playlists),
+                        ),
+                      ),
                       child: const Text('Show all'),
                     )
                   : const SizedBox.shrink(),

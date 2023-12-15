@@ -18,26 +18,29 @@ class PlaylistTile extends StatelessWidget {
           builder: (context) => PlaylistView(playlistId: playlist.id),
         ),
       ),
-      child: Row(
-        children: [
-          const Icon(
-            Icons.music_note,
-            size: 60,
-          ),
-          const SizedBox(width: 8),
-          Column(
-            children: [
-              Text(
-                playlist.name,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
+        child: Row(
+          children: [
+            const Icon(
+              Icons.music_note,
+              size: 60,
+            ),
+            const SizedBox(width: 8),
+            Column(
+              children: [
+                Text(
+                  playlist.name,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -5,7 +5,7 @@ import 'package:flutter_spotify/src/home/home_root_screen.dart';
 import 'package:flutter_spotify/src/library/library_root_screen.dart';
 import 'package:flutter_spotify/src/news/news_view.dart';
 import 'package:flutter_spotify/src/playlist/views/playlist_view.dart';
-import 'package:flutter_spotify/src/profile/views/profile_view.dart';
+import 'package:flutter_spotify/src/profile/presentation/views/profile_view.dart';
 import 'package:flutter_spotify/src/scaffold_nested_navigation.dart';
 import 'package:flutter_spotify/src/search/search_root_screen.dart';
 import 'package:flutter_spotify/src/settings/settings_controller.dart';
