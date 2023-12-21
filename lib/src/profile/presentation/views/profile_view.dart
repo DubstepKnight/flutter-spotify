@@ -2,11 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_spotify/src/playlist/data/playlist_provider.dart';
-import 'package:flutter_spotify/src/profile/data/profile_repository.dart';
 import 'package:flutter_spotify/src/profile/presentation/controllers/profile_controller.dart';
 import 'package:flutter_spotify/src/profile/presentation/views/playlists_view.dart';
 import 'package:flutter_spotify/src/profile/presentation/views/profile_header_view.dart';
-import 'package:flutter_spotify/src/utils/async_value_ui.dart';
 
 const kClampMax = 100.0;
 
@@ -43,9 +41,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> {
 
   @override
   Widget build(BuildContext context) {
-    // final profileValue = ref.watch(profileProvider);
     final playlists = ref.watch(playlistsProvider);
-
     final state = ref.watch(profileControllerProvider);
 
     return state.when(

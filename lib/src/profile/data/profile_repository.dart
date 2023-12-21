@@ -81,8 +81,3 @@ final profileProvider = FutureProvider.autoDispose<Profile?>((ref) {
   final repository = ref.watch(profileRepositoryProvider);
   return repository.watchCurrentProfile();
 });
-
-// final authStateChangeProvider = StreamProvider.autoDispose<AppUser?>((ref) {
-//   final authRepository = ref.watch(authRepositoryProvider);
-//   return authRepository.authStateChanges();
-// });

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spotify/router_config.dart';
 import 'package:flutter_spotify/src/components/profile_drawer.dart';
 import 'package:flutter_spotify/src/library/custom_app_bar.dart';
 import 'package:go_router/go_router.dart';
@@ -12,7 +11,6 @@ ShapeBorder kBackButtonShape = const RoundedRectangleBorder(
 
 Widget kBackBtn = const Icon(
   Icons.arrow_back_ios,
-  // color: Colors.black54,
 );
 
 class LibraryRootScreen extends StatelessWidget {
@@ -26,12 +24,7 @@ class LibraryRootScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: ProfileDrawer(
-        profileName: Routes.libraryProfile.name,
-        newsName: Routes.libraryNews.name,
-        historyName: Routes.libraryHistory.name,
-        settingsName: Routes.librarySettings.name,
-      ),
+      drawer: const ProfileDrawer(),
       body: CustomScrollView(
         slivers: [
           const CustomAppBar(),

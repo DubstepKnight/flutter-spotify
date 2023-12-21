@@ -9,6 +9,7 @@ import 'package:flutter_spotify/src/common-domains/image.dart';
 import 'package:flutter_spotify/src/common-domains/owner.dart';
 import 'package:flutter_spotify/src/common-domains/restrictions.dart';
 import 'package:flutter_spotify/src/common-domains/tracks.dart';
+import 'package:http/http.dart' as http;
 
 import '../domain/playlist.dart';
 
@@ -346,6 +347,14 @@ class PlaylistRepository {
 
   Provider<Playlist?> getPlaylistProvider(String id) {
     return Provider((_) => getPlaylist(id));
+  }
+
+  Future<http.Response> fetchAlbum() async {
+    final nice = await http.get(
+      Uri.parse('https://jsonplaceholder.typicode.com/albums/1'),
+    );
+    print(nice);
+    return nice;
   }
 }
 

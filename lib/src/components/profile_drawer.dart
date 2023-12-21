@@ -4,21 +4,11 @@ import 'package:flutter_spotify/src/listening-history/listening_history.dart';
 import 'package:flutter_spotify/src/profile/presentation/controllers/profile_controller.dart';
 import 'package:flutter_spotify/src/profile/presentation/views/profile_view.dart';
 import 'package:flutter_spotify/src/settings/settings_view.dart';
-import 'package:go_router/go_router.dart';
 
 class ProfileDrawer extends ConsumerWidget {
   const ProfileDrawer({
     super.key,
-    required this.profileName,
-    required this.newsName,
-    required this.historyName,
-    required this.settingsName,
   });
-
-  final String profileName;
-  final String newsName;
-  final String historyName;
-  final String settingsName;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -80,7 +70,7 @@ class ProfileDrawer extends ConsumerWidget {
                   Text('What\'s new')
                 ]),
                 onTap: () {
-                  context.goNamed(newsName);
+                  // context.goNamed(newsName);
                 },
               ),
               ListTile(
